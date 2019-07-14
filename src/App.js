@@ -2,6 +2,10 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import { WebClient } from '@slack/web-api';
+
+const web = new WebClient();
+
 function App() {
   return (
     <div className="App">
