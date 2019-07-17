@@ -2,3 +2,4 @@
   Command = "yarn build"
   functions = "netlify-lambda"
   Publish = "build"
+  NETLIFY_ENV = "production"

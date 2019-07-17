@@ -2,7 +2,7 @@ import { WebClient } from '@slack/web-api';
 import dotenv from 'dotenv';
 import path from 'path';
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NETLIFY_ENV !== 'production') {
   dotenv.config({ path: path.resolve('./.env.local') });
 }
 
@@ -20,7 +20,10 @@ exports.handler = async event => {
       client_id,
       client_secret,
       code,
-      redirect_uri: 'http://localhost:3000/auth',
+      redirect_uri:
+        process.env.NETLIFY_ENV === 'production'
+          ? 'https://redturtle-slack-files.netlify.com/auth'
+          : 'http://localhost:3000/auth',
     });
     const data = JSON.stringify(result);
 
