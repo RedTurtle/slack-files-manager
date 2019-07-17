@@ -3,3 +3,8 @@
   functions = "netlify-lambda"
   Publish = "build"
   NETLIFY_ENV = "production"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
