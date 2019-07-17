@@ -16,8 +16,8 @@ class FilesList extends Component {
   }
 
   fetchFiles = () => {
-    this.props.web.files
-      .list()
+    fetch(`/.netlify/functions/list?token=${this.props.token}`)
+      .then(res => res.json())
       .then(res => {
         if (res.ok) {
           this.setState({
@@ -34,8 +34,8 @@ class FilesList extends Component {
   };
 
   deleteFile = id => {
-    this.props.web.files
-      .delete({ file: id })
+    fetch(`/.netlify/functions/delete?token=${this.props.token}&file=${id}`)
+      .then(res => res.json())
       .then(res => {
         if (res.ok) {
           this.fetchFiles();
