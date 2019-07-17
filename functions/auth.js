@@ -2,7 +2,9 @@ import { WebClient } from '@slack/web-api';
 import dotenv from 'dotenv';
 import path from 'path';
 
-dotenv.config({ path: path.resolve('./.env.local') });
+if (process.env.NODE_ENV === 'development') {
+  dotenv.config({ path: path.resolve('./.env.local') });
+}
 
 const client_id = process.env.REACT_APP_SLACK_CLIENT_ID;
 const client_secret = process.env.SLACK_CLIENT_SECRET;

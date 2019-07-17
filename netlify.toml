@@ -1,4 +1,4 @@
 [build]
   Command = "yarn build"
   functions = "netlify-lambda"
-  Publish = "public"
+  Publish = "build"
