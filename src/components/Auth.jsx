@@ -13,7 +13,6 @@ const Auth = ({ location }) => {
       fetch(`/.netlify/functions/auth?code=${code}`)
         .then(res => res.json())
         .then(data => {
-          console.log(data);
           if (data.ok) {
             setToken(data.access_token);
           } else {
