@@ -21,15 +21,18 @@ const Home = ({ location }) => {
       {token === '' && (
         <Paper>
           <a
-            href={`https://slack.com/oauth/authorize?scope=identity.basic&client_id=${
+            href={`https://slack.com/oauth/authorize?scope=files:read,files:write:user&client_id=${
               process.env.REACT_APP_SLACK_CLIENT_ID
             }&redirect_uri=${encodeURIComponent(
               `${window.location.origin}/auth`
             )}`}
           >
             <img
-              src="https://api.slack.com/img/sign_in_with_slack.png"
-              alt="Sign in with Slack"
+              alt="Add to Slack"
+              height="40"
+              width="139"
+              src="https://platform.slack-edge.com/img/add_to_slack.png"
+              srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x"
             />
           </a>
         </Paper>
