@@ -3,12 +3,14 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 
 import File from './File';
+import Filters from './Filters';
 
 class FilesList extends Component {
   state = {
     files: [],
     paging: {},
     error: '',
+    filters: {},
   };
 
   componentDidMount() {
@@ -50,12 +52,21 @@ class FilesList extends Component {
       });
   };
 
+  setTs_to = ts_to => {
+    this.setState(state => ({
+      filters: {
+        ...state.filters,
+        ts_to,
+      },
+    }));
+  };
+
   render() {
     const { files, error } = this.state;
 
     return (
       <Grid container spacing={3}>
-        {error !== '' && <Paper>{error}</Paper>}
+        {error !== '' ? <Paper>{error}</Paper> : <Filters setTs_to={this.setTs_to} />}
         {files.map(file => (
           <Grid item key={file.id}>
             <File
